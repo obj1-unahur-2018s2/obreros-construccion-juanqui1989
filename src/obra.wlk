@@ -19,12 +19,12 @@ class Obra {
 	
 	 }
 	method cuentaCon(_obrero) {
-		obrerosDisponibles.contains(_obrero)
+		return obrerosDisponibles.contains(_obrero)
 	}
 	
 	 method registrarJornadaLaboral() {
-	 	obrerosDisponibles.foreach({obrero => obrero.trabajar()})
-	 	obrerosDisponibles.foreach({obrero => obrero.jornada()})
+	 	obrerosDisponibles.forEach({obrero => obrero.trabajar(self)})
+	 	obrerosDisponibles.forEach({obrero => obrero.jornada()})
 	 	jornada ++
 	 }
 	 method importeAdeudado() {

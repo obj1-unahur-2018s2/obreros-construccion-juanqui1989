@@ -3,8 +3,8 @@ import uocra.*
 
 class Obrero{
 	var property jornalesAdeudados =0
-	var property disponible
-	method conLicencia(trueOrFalse){
+	var property disponible = true
+	method disponibilidad(trueOrFalse){
 		disponible = trueOrFalse
 	}
 	method jornada() {
@@ -30,14 +30,14 @@ class Albanil inherits Obrero {
 
 class Gasista inherits Obrero {
 	override method trabajar(_deQueObra) {
-		_deQueObra.consumirCanio(3)
+		_deQueObra.consumirCanios(3)
 		_deQueObra.consumirFosforos(20)
 	}
 }
 
 class Plomero inherits Obrero {
 	override method trabajar(_deQueObra){
-		_deQueObra.consumirCanio(10)
+		_deQueObra.consumirCanios(10)
 		_deQueObra.consumirArandelas(30)
 	}
 }	

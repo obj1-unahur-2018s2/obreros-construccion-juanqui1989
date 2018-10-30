@@ -14,10 +14,11 @@ describe "Modelo Basico" {
 	fixture{
 		//materiales
 		obraDeHurlingham.ladrillos(1000)
-		obraDeHurlingham.canio(400)
+		obraDeHurlingham.canios(400)
 		obraDeHurlingham.fosforos(8000)
 		obraDeHurlingham.arandelas(500)
 		//agregar obreros
+		juan.disponibilidad(false)
 		obraDeHurlingham.agregarObreroAPlantilla(juan)
 		obraDeHurlingham.agregarObreroAPlantilla(jose)
 		obraDeHurlingham.agregarObreroAPlantilla(jaime)
@@ -26,9 +27,13 @@ describe "Modelo Basico" {
 		
 		
 	}
-	test "testX" {
+	test "registrar jornada" {
+		obraDeHurlingham.registrarJornadaLaboral()
 
-		assert.that(true)
-
+		assert.equals(900,obraDeHurlingham.ladrillos())
+		assert.equals(384,obraDeHurlingham.canios())
+		assert.equals(7960,obraDeHurlingham.fosforos())
+		assert.equals(470,obraDeHurlingham.arandelas())	
+		assert.that(obraDeHurlingham.cuentaCon(jose))
 	}
 }
