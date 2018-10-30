@@ -36,4 +36,6 @@ describe "Modelo Basico" {
 		assert.equals(470,obraDeHurlingham.arandelas())	
 		assert.that(obraDeHurlingham.cuentaCon(jose))
 	}
+	
+	
 }
