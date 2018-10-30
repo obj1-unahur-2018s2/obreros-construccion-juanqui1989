@@ -1,0 +1,34 @@
+import obreros.*
+import obra.*
+
+describe "Modelo Basico" {
+	//nueva obra
+	const obraDeHurlingham = new Obra()
+	//nuevos obreros
+	const juan = new Albanil()
+	const jose = new Albanil()
+	const jaime = new Gasista()
+	const felipe = new Gasista()
+	const raul = new Plomero()
+	
+	fixture{
+		//materiales
+		obraDeHurlingham.ladrillos(1000)
+		obraDeHurlingham.canio(400)
+		obraDeHurlingham.fosforos(8000)
+		obraDeHurlingham.arandelas(500)
+		//agregar obreros
+		obraDeHurlingham.agregarObreroAPlantilla(juan)
+		obraDeHurlingham.agregarObreroAPlantilla(jose)
+		obraDeHurlingham.agregarObreroAPlantilla(jaime)
+		obraDeHurlingham.agregarObreroAPlantilla(felipe)
+		obraDeHurlingham.agregarObreroAPlantilla(raul)
+		
+		
+	}
+	test "testX" {
+
+		assert.that(true)
+
+	}
+}
