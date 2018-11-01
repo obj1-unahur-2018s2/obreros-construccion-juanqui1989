@@ -2,7 +2,7 @@ import obreros.*
 
 class Obra {
 
-	var obrerosDisponibles = #{}
+	var property obrerosDisponibles = #{}
 	var property efectivo = 0
 	var property jornada = 0
 	var property ladrillos = 200
@@ -11,6 +11,10 @@ class Obra {
 	var property cables = 200
 	var property fosforos = 200
 	var property arandelas = 200
+	var property paredLevantada = 0
+	var property caniosDeGasColocado = 0
+	var property caniosDeAguaColocado = 0
+	var property cablesColocados = 0
 
 	method agregarObreroAPlantilla(_obrero) {
 		if (_obrero.disponible()) {
@@ -27,6 +31,9 @@ class Obra {
 	}
 
 	method registrarJornadaLaboral() {
+		if (self.obrerosDisponibles().isEmpty()) {
+			self.error("no hay obreros diponibles para trabajar")
+		}
 		obrerosDisponibles.forEach({ obrero => obrero.trabajar(self)})
 		obrerosDisponibles.forEach({ obrero => obrero.jornada()})
 		jornada++
@@ -39,7 +46,6 @@ class Obra {
 	method pagarleALosObreros() {
 		efectivo = efectivo - self.importeAdeudado()
 		obrerosDisponibles.forEach({ obrero => obrero.jornalesAdeudados(0)})
-		
 	}
 
 	method consumirLadrillos(cuanto) {
@@ -54,7 +60,7 @@ class Obra {
 		cintas -= cuanto
 	}
 
-	method consumirCables(cuanto) {
+	method consumirCable(cuanto) {
 		cables -= cuanto
 	}
 
@@ -66,10 +72,21 @@ class Obra {
 		arandelas -= cuanto
 	}
 
-/*method paredLevantada(cantidadDeLadrillos)
- * method instalacionDeAgua(metrosDeCanos)
- * method instalacionElectrica(metrosDeCable)
- * method instalacionDeGas(metrosDeCano)
- */
+	method levantarPared(cantidadDeLadrillos) {
+		paredLevantada = cantidadDeLadrillos
+	}
+
+	method instalarCaniosDeAgua(cantidadDeCanios) {
+		caniosDeAguaColocado = cantidadDeCanios
+	}
+
+	method colocarCable(metrosDeCable) {
+		cablesColocados = metrosDeCable
+	}
+
+	method instalarCaniosDeGas(metrosDeCanio) {
+		caniosDeGasColocado = metrosDeCanio
+	}
+
 }
 

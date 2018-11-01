@@ -10,6 +10,8 @@ describe "pago de jornales" {
 	const jaime = new Gasista()
 	const felipe = new Gasista()
 	const raul = new Plomero()
+	const pedro = new Electricista()
+	const pepito = new Electricista()
 	fixture{
 		//materiales
 		obraDeHurlingham.ladrillos(1000)
@@ -23,6 +25,7 @@ describe "pago de jornales" {
 		obraDeHurlingham.agregarObreroAPlantilla(jaime)
 		obraDeHurlingham.agregarObreroAPlantilla(felipe)
 		obraDeHurlingham.agregarObreroAPlantilla(raul)
+		
 		//agregar efectivo 
 		obraDeHurlingham.efectivo(100000)
 		//registrar una jornada
@@ -45,10 +48,13 @@ describe "pago de jornales" {
 	test "despues de dos jornadas" {
 		juan.disponibilidad(true)
 		obraDeHurlingham.agregarObreroAPlantilla(juan)
+		obraDeHurlingham.agregarObreroAPlantilla(pedro)
+		obraDeHurlingham.agregarObreroAPlantilla(pepito)
 		raul.disponibilidad(false)
 		obraDeHurlingham.quitarObrerosAPlantilla(raul)
 		obraDeHurlingham.registrarJornadaLaboral()
 		assert.equals(4000,jose.totalACobrar())
+		
 		obraDeHurlingham. pagarleALosObreros()
 		
 		assert.equals(78000,obraDeHurlingham.efectivo())
